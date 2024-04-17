@@ -34,12 +34,12 @@ const EditPage = () => {
         let model: IModel = {paramValues: []};
         if (form.current) {
             const data = new FormData(form.current);
-            for (let key in data.entries()) {
+            data.forEach((value, key) => {
                 model.paramValues.push({
                     'paramId': Number(key.replace('param_', '')),
-                    'value': data.get(key)?.toString() || ''
+                    'value': value?.toString() || ''
                 })
-            }
+            })
         }
 
         return model;
